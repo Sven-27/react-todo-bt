@@ -1,0 +1,8 @@
+.todoItem > h1{
+    display: flex;
+    align-items: center;
+}
+
+.todoItem > h1 > input{
+    margin-right: 10px;
+}

@@ -1,25 +1,53 @@
-import logo from './logo.svg';
+import { useState } from 'react'
 import './App.css';
-
+import Todos from './components/Todos'
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [state, setState] = useState([
+    {
+      id: 1,
+      title: 'Take out the trash',
+      completed: true,
+    },
+      {
+        id: 2,
+        title: 'Take the dog out',
+        completed: false
+      },
+      {
+        id: 3,
+        title: 'need to buy food',
+        completed: false
+      },
+  ]);
+
+const markComplete = (id) => {
+state.map((todo) => {
+  if(todo.id === id){
+   todo.completed = !todo.completed
+   console.log("found" + id)
+    }
+    
+
+})
+console.log(id)
+console.log(state)
+//  setState = ({ todos: state.todos.map(todo => {
+//    console.log(todo.id)
+  //  console.log(id)
+  //  if(todo.id === id) {
+//      setState = todo.completed = !todo.completed
+//    }
+
+//  })})
+// console.log('click')
 }
 
-export default App;
+// console.log(markComplete)
+
+  return (
+    <div className="app">
+      <Todos todos={state} markComplete={markComplete}/>
+    </div>   
+  );
+  }
+export default App
