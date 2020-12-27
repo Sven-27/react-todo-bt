@@ -13,3 +13,25 @@ a{
   color: #333;
   text-decoration: none;
 }
+
+.app__container{
+  padding: 0 1rem;
+}
+
+.btn{
+  display: inline-block;
+  border: none;
+  background: #555;
+  color: #fff;
+  padding: 7px 20px;
+  cursor: pointer;
+  outline: none !important;
+}
+
+.btn:hover{
+  background: #666;
+}
+
+input{
+  outline: none !important;
+}

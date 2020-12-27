@@ -29,13 +29,27 @@ return {
             <h1>
             <input type="checkbox" onChange={() => props.markComplete(id)}/>
              {title}
+             <button onClick={() => props.delTodo(id)}>x</button>
             </h1>
         </div>
     )
 }
 
 TodoItem.propTypes = {
-    todo: PropTypes.object.isRequired
+    todo: PropTypes.object.isRequired,
+    markComplete: PropTypes.func.isRequired,
+    delTodo: PropTypes.func.isRequired,
 }
+
+// const btnStyle ={
+//     float: 'right',
+//     background: '#ff0000',
+//     color: '#fff',
+//     border: 'none',
+//     padding: '5px 9px',
+//     borderRadius: '50%',
+//     cursor: 'pointer',
+    
+// }
 
 export default TodoItem

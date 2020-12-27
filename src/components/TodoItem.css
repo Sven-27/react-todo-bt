@@ -1,8 +1,22 @@
 .todoItem > h1{
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .todoItem > h1 > input{
-    margin-right: 10px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.todoItem > h1 > button{
+    position: absolute;
+    right: 20px;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    outline: none !important;
+    padding: 5px 9px;
+    border-radius: 50%;
+    cursor: pointer; 
 }
