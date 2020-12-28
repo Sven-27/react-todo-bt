@@ -1,12 +1,12 @@
-import React,  { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import './App.css';
 import Todos from './components/Todos'
 import Header from './components/layout/Header'
 import AddTodo from './components/AddTodo'
 import About from './components/pages/About'
-import { v4 }  from 'uuid';
-
+// import { v4 }  from 'uuid';
+import axios from 'axios'
 
 
 
@@ -14,7 +14,12 @@ import { v4 }  from 'uuid';
 function App() {
   const [state, setState] = useState([]);
 
- 
+ useEffect(() => {
+ axios("https://jsonplaceholder.typicode.com/todos?_limit=10")
+ .then((response) => {
+   setState(response.data)
+ })
+ }, [])
     
 
 
@@ -34,17 +39,28 @@ state.map((todo) => {
 
 //delete todo
 const delTodo = (id) => {
-  setState([...state.filter(todo => todo.id !== id)])
+  axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+  .then((res) => {
+    setState([...state.filter(todo => todo.id !== id)])
+  })
 }
+
 
 //addTodo
  function addTodo(title){
-   const newTodo = {
-     id: v4(),
-     title: title,
-     completed: false,
-   }
-  setState([newTodo, ...state])
+  //  const newTodo = {
+  //    id: v4(),
+  //    title: title,
+  //    completed: false,
+  //  }
+  axios.post("https://jsonplaceholder.typicode.com/todos", {
+    title: title,
+    completed: false,
+  })
+  .then((res) => {
+    setState([res.data, ...state])
+  })
+  
 }
 
   return (
